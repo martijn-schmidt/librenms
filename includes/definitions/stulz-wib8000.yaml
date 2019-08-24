@@ -1,0 +1,12 @@
+os: stulz-wib8000
+text: 'Stulz WIB 8000'
+type: environment
+icon: stulz
+group: stulz
+over:
+    - { graph: device_temperature, text: 'Temperature' }
+mib_dir:
+    - stulz
+discovery:
+    - sysObjectID:
+        - .1.3.6.1.4.1.29462.10
