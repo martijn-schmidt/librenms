@@ -16,26 +16,6 @@ $hardware        = 'WIB 8000';
 $version         = 'v'.snmp_get($device, 'wibFirmware.0', '-Oqv', 'Stulz-WIB8000-MIB');
 $serial          = '';
 
-// Define all the hardware recognized by unitsettingHwType in Stulz-WIB8000-MIB.
-$unitsettingHwType_array = [
-    0 => 'unknown',
-    1 => 'C4000',
-    2 => 'C1001',
-    3 => 'C1002',
-    4 => 'C5000',
-    5 => 'C6000',
-    6 => 'C1010',
-    7 => 'C7000IOC',
-    8 => 'C7000AT',
-    9 => 'C7000PT',
-    10 => 'C5MSC',
-    11 => 'C7000PT2',
-    12 => 'C2020',
-    13 => 'C100',
-    14 => 'C102',
-    15 => 'C103',
-];
-
 // Define all the families recognized by unitsettingFamily in Stulz-WIB8000-MIB.
 // 0 => 'invalid' was removed since we don't want to show it in $features.
 $unitsettingFamily_array = [
@@ -57,7 +37,28 @@ $unitsettingFamily_array = [
     16 => 'Prodigy',
 ];
 
+// Define all the hardware recognized by unitsettingHwType in Stulz-WIB8000-MIB.
+// 0 => 'unknown' was removed since we don't want to show it in $features.
+$unitsettingHwType_array = [
+    1 => 'C4000',
+    2 => 'C1001',
+    3 => 'C1002',
+    4 => 'C5000',
+    5 => 'C6000',
+    6 => 'C1010',
+    7 => 'C7000IOC',
+    8 => 'C7000AT',
+    9 => 'C7000PT',
+    10 => 'C5MSC',
+    11 => 'C7000PT2',
+    12 => 'C2020',
+    13 => 'C100',
+    14 => 'C102',
+    15 => 'C103',
+];
+
 // Define all the types recognized by unitsettingFamily in Stulz-WIB8000-MIB.
+// 255 => 'unknown' was removed since we don't want to show it in $features.
 $unitsettingType_array = [
     0 => 'MC',
     1 => 'DX',
@@ -79,7 +80,6 @@ $unitsettingType_array = [
     17 => 'CyberRow A',
     18 => 'CyberRow CW',
     19 => 'CyberRow G',
-    255 => 'unknown',
 ];
 
 $unitTable_array = snmpwalk_cache_multi_oid($device, 'unitTable', $unitTable_array, 'Stulz-WIB8000-MIB');
@@ -87,7 +87,7 @@ $sWVersion_array = snmpwalk_cache_multi_oid($device, 'sWVersion', $sWVersion_arr
 
 foreach ($unitTable_array as $index => $unitTable) {
     isset($features) ? $features = rtrim($features).', ' : $features = '';
-    $features .= 'Unit '.$index.' ';
+    $features .= 'Unit '.$index.' - ';
     if(isset($unitsettingFamily_array[$unitTable['unitsettingFamily']])) {
         $features .= $unitsettingFamily_array[$unitTable['unitsettingFamily']].' ';
     }
