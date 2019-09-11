@@ -12,10 +12,12 @@
  * the source code distribution for details.
  */
 
-$hardware        = 'WIB 8000';
-$version         = 'v'.snmp_get($device, 'wibFirmware.0', '-Oqv', 'Stulz-WIB8000-MIB');
-$serial          = '';
+$hardware = 'WIB 8000';
+$version  = 'v'.snmp_get($device, 'wibFirmware.0', '-Oqv', 'Stulz-WIB8000-MIB');
+$serial   = '';
+$features = '';
 
+/*
 // Define all the families recognized by unitsettingFamily in Stulz-WIB8000-MIB.
 // 0 => 'invalid' was removed since we don't want to show it in $features.
 $unitsettingFamily_array = [
@@ -104,3 +106,4 @@ foreach ($unitTable_array as $index => $unitTable) {
 }
 
 isset($features) ? $features = trim($features) : $features = '';
+*/

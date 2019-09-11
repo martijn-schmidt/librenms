@@ -1,0 +1,412 @@
+mib: Stulz-WIB8000-MIB
+modules:
+    sensors:
+        pre-cache:
+            data:
+                - oid:
+                    - unitsettingName
+                    - opCtrlTemperatureTable
+                    - opCtrlHumidityTable
+                    - limitWaterInlet2MinTemperature
+                    - limitWaterInlet2MaxTemperature
+        temperature:
+            options:
+                divisor: 10
+                skip_values: 0
+            data:
+                -
+                    oid: infoValTemperatureTable
+                    value: unitAirTemperature
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.1.1.1.1.1.1170.{{ $index }}'
+                    low_limit: unitEmergencyTemperature
+                    descr: '{{ $unitsettingName }} - General Air'
+                    index: 'unitAirTemperature.{{ $index }}'
+                    group: 'Air Temperature'
+                -
+                    oid: infoValTemperatureTable
+                    value: unitReturnAirTemperature
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.1.1.1.1.1.1192.{{ $index }}'
+                    low_limit: limitReturnAirTempTooLowAlarm
+                    high_limit: limitReturnAirTempTooHighAlarm
+                    descr: '{{ $unitsettingName }} - Return Air 1'
+                    index: 'unitReturnAirTemperature.{{ $index }}'
+                    group: 'Air Temperature'
+                -
+                    oid: infoValTemperatureTable
+                    value: unitReturnAirTemperature2
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.1.1.1.1.1.1244.{{ $index }}'
+                    low_limit: limitReturnAirTempTooLowAlarm
+                    high_limit: limitReturnAirTempTooHighAlarm
+                    descr: '{{ $unitsettingName }} - Return Air 2'
+                    index: 'unitReturnAirTemperature2.{{ $index }}'
+                    group: 'Air Temperature'
+                -
+                    oid: infoValTemperatureTable
+                    value: unitReturnAirTemperature3
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.1.1.1.1.1.1245.{{ $index }}'
+                    low_limit: limitReturnAirTempTooLowAlarm
+                    high_limit: limitReturnAirTempTooHighAlarm
+                    descr: '{{ $unitsettingName }} - Return Air 3'
+                    index: 'unitReturnAirTemperature3.{{ $index }}'
+                    group: 'Air Temperature'
+                -
+                    oid: infoValTemperatureTable
+                    value: unitSupplyAirTemperature
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.1.1.1.1.1.1193.{{ $index }}'
+                    low_limit: limitSupplyAirTempTooLowAlarm
+                    high_limit: limitSupplyAirTempTooHighAlarm
+                    descr: '{{ $unitsettingName }} - Supply Air 1'
+                    index: 'unitSupplyAirTemperature.{{ $index }}'
+                    group: 'Air Temperature'
+                -
+                    oid: infoValTemperatureTable
+                    value: unitSupplyAirTemperature2
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.1.1.1.1.1.1248.{{ $index }}'
+                    low_limit: limitSupplyAirTempTooLowAlarm
+                    high_limit: limitSupplyAirTempTooHighAlarm
+                    descr: '{{ $unitsettingName }} - Supply Air 2'
+                    index: 'unitSupplyAirTemperature2.{{ $index }}'
+                    group: 'Air Temperature'
+                -
+                    oid: infoValTemperatureTable
+                    value: unitSupplyAirTemperature3
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.1.1.1.1.1.1243.{{ $index }}'
+                    low_limit: limitSupplyAirTempTooLowAlarm
+                    high_limit: limitSupplyAirTempTooHighAlarm
+                    descr: '{{ $unitsettingName }} - Supply Air 3'
+                    index: 'unitSupplyAirTemperature3.{{ $index }}'
+                    group: 'Air Temperature'
+                -
+                    oid: infoValTemperatureTable
+                    value: unitOutsideAirTemperature
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.1.1.1.1.1.1196.{{ $index }}'
+                    descr: '{{ $unitsettingName }} - Outside Air'
+                    index: 'unitOutsideAirTemperature.{{ $index }}'
+                    group: 'Air Temperature'
+                -
+                    oid: infoValWaterTable
+                    value: waterInTemperatu1ChillersPrimary
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.1.2.1.1.1191.{{ $index }}'
+                    descr: '{{ $unitsettingName }} - Water Inlet 1 (Chillers: Pri)'
+                    index: 'waterInTemperatu1ChillersPrimary.{{ $index }}'
+                    group: 'Water Temperature'
+                -
+                    oid: infoValWaterTable
+                    value: waterOutTemperatChillersPrimary
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.1.2.1.1.1206.{{ $index }}'
+                    descr: '{{ $unitsettingName }} - Water Outlet 1 (Chillers: Pri)'
+                    index: 'waterOutTemperatChillersPrimary.{{ $index }}'
+                    group: 'Water Temperature'
+                -
+                    oid: infoValWaterTable
+                    value: waterInTemperatuhillersSecondary
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.1.2.1.1.1202.{{ $index }}'
+                    low_limit: limitWaterInlet2MinTemperature
+                    high_limit: limitWaterInlet2MaxTemperature
+                    descr: '{{ $unitsettingName }} - Water Inlet 2 (Chillers: Sec)'
+                    index: 'waterInTemperatuhillersSecondary.{{ $index }}'
+                    group: 'Water Temperature'
+        humidity:
+            options:
+                divisor: 10
+                skip_values: 0
+            data:
+                -
+                    oid: infoValHumidityTable
+                    value: unitHumidity
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.1.1.2.1.1.1171.{{ $index }}'
+                    low_limit: limitSupplyAirHumidTooLowAlarm
+                    high_limit: limitSupplyAirHumidTooHighAlarm
+                    descr: '{{ $unitsettingName }} - Supply Air'
+                    index: 'unitHumidity.{{ $index }}'
+                    group: 'Air Relative Humidity'
+                -
+                    oid: infoValHumidityTable
+                    value: unitReturnAirHumidity
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.1.1.2.1.1.1194.{{ $index }}'
+                    low_limit: limitReturnAirHumidTooLowAlarm
+                    high_limit: limitReturnAirHumidTooHighAlarm
+                    descr: '{{ $unitsettingName }} - Return Air'
+                    index: 'unitReturnAirHumidity.{{ $index }}'
+                    group: 'Air Relative Humidity'
+        pressure:
+            data:
+                -
+                    oid: infoValRefrigerantTable
+                    value: unitSuctionPressure1
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.1.3.1.1.2278.{{ $index }}'
+                    multiplier: 10
+                    descr: '{{ $unitsettingName }} - Suction 1'
+                    index: 'unitSuctionPressure1.{{ $index }}'
+                    group: 'Refrigerant Pressure'
+                -
+                    oid: infoValRefrigerantTable
+                    value: unitSuctionPressure2
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.1.3.1.1.2279.{{ $index }}'
+                    multiplier: 10
+                    descr: '{{ $unitsettingName }} - Suction 2'
+                    index: 'unitSuctionPressure2.{{ $index }}'
+                    group: 'Refrigerant Pressure'
+                -
+                    oid: infoValRefrigerantTable
+                    value: unitEvaporationPressure1
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.1.3.1.1.2233.{{ $index }}'
+                    multiplier: 10
+                    descr: '{{ $unitsettingName }} - Evaporation 1'
+                    index: 'unitEvaporationPressure1.{{ $index }}'
+                    group: 'Refrigerant Pressure'
+                -
+                    oid: infoValRefrigerantTable
+                    value: unitEvaporationPressure2
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.1.3.1.1.2273.{{ $index }}'
+                    multiplier: 10
+                    descr: '{{ $unitsettingName }} - Evaporation 2'
+                    index: 'unitEvaporationPressure2.{{ $index }}'
+                    group: 'Refrigerant Pressure'
+                -
+                    oid: infoValRefrigerantTable
+                    value: unitCondensationPressure1
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.1.3.1.1.2235.{{ $index }}'
+                    multiplier: 10
+                    descr: '{{ $unitsettingName }} - Condensation 1'
+                    index: 'unitCondensationPressure1.{{ $index }}'
+                    group: 'Refrigerant Pressure'
+                -
+                    oid: infoValRefrigerantTable
+                    value: unitCondensationPressure2
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.1.3.1.1.2250.{{ $index }}'
+                    multiplier: 10
+                    descr: '{{ $unitsettingName }} - Condensation 2'
+                    index: 'unitCondensationPressure2.{{ $index }}'
+                    group: 'Refrigerant Pressure'
+        load:
+            data:
+                -
+                    oid: infoGECWValvesTable
+                    value: gECWValveOpeningGrade1
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.2.1.2.2.1.1.5214.{{ $index }}'
+                    descr: '{{ $unitsettingName }} - GE/CW 1'
+                    index: 'gECWValveOpeningGrade1.{{ $index }}'
+                    group: 'Valve Opening Grade'
+                    skip_values:
+                        -
+                          oid: numberOfGeCwValves
+                          op: '<'
+                          value: 1
+                -
+                    oid: infoGECWValvesTable
+                    value: gECWValveOpeningGrade2
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.2.1.2.2.1.1.5224.{{ $index }}'
+                    descr: '{{ $unitsettingName }} - GE/CW 2'
+                    index: 'gECWValveOpeningGrade2.{{ $index }}'
+                    group: 'Valve Opening Grade'
+                    skip_values:
+                        -
+                          oid: numberOfGeCwValves
+                          op: '<'
+                          value: 2
+                -
+                    oid: unitFreecoolingValve
+                    value: unitFreecoolingValve
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.2.1.2.5.1.2238.{{ $index }}'
+                    descr: '{{ $unitsettingName }} - Freecooling'
+                    index: 'unitFreecoolingValve.{{ $index }}'
+                    group: 'Valve Opening Grade'
+                -
+                    oid: infoAirTable
+                    value: fan1Speed
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.2.4.1.1.6932.{{ $index }}'
+                    descr: '{{ $unitsettingName }} - General Fan 1'
+                    index: 'fan1Speed.{{ $index }}'
+                    group: 'Fan Speed'
+                    skip_values:
+                        -
+                          oid: numberOfFans
+                          op: '<'
+                          value: 1
+                -
+                    oid: infoAirTable
+                    value: fan2Speed
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.2.4.1.1.7032.{{ $index }}'
+                    descr: '{{ $unitsettingName }} - General Fan 2'
+                    index: 'fan2Speed.{{ $index }}'
+                    group: 'Fan Speed'
+                    skip_values:
+                        -
+                          oid: numberOfFans
+                          op: '<'
+                          value: 2
+                -
+                    oid: infoAirTable
+                    value: fan3Speed
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.2.4.1.1.7132.{{ $index }}'
+                    descr: '{{ $unitsettingName }} - General Fan 3'
+                    index: 'fan3Speed.{{ $index }}'
+                    group: 'Fan Speed'
+                    skip_values:
+                        -
+                          oid: numberOfFans
+                          op: '<'
+                          value: 3
+        state:
+            data:
+                -
+                    oid: infoCompressorTable
+                    value: compr1Running
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.2.1.1.1.1.4403.{{ $index }}'
+                    descr: '{{ $unitsettingName }} - Compressor 1'
+                    index: 'compr1Running.{{ $index }}'
+                    group: 'Compressor State'
+                    skip_values:
+                        -
+                          oid: numberOfCompressors
+                          op: '<'
+                          value: 1
+                    state_name: comprRunning
+                    states:
+                        - { value: 0, descr: Off, graph: 0, generic: 0 }
+                        - { value: 1, descr: On, graph: 1, generic: 0 }
+                -
+                    oid: infoCompressorTable
+                    value: compr2Running
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.2.1.1.1.1.4503.{{ $index }}'
+                    descr: '{{ $unitsettingName }} - Compressor 2'
+                    index: 'compr2Running.{{ $index }}'
+                    group: 'Compressor State'
+                    skip_values:
+                        -
+                          oid: numberOfCompressors
+                          op: '<'
+                          value: 2
+                    state_name: comprRunning
+                    states:
+                        - { value: 0, descr: Off, graph: 0, generic: 0 }
+                        - { value: 1, descr: On, graph: 1, generic: 0 }
+                -
+                    oid: infoCompressorTable
+                    value: compr3Running
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.2.1.1.1.1.9503.{{ $index }}'
+                    descr: '{{ $unitsettingName }} - Compressor 3'
+                    index: 'compr3Running.{{ $index }}'
+                    group: 'Compressor State'
+                    skip_values:
+                        -
+                          oid: numberOfCompressors
+                          op: '<'
+                          value: 3
+                    state_name: comprRunning
+                    states:
+                        - { value: 0, descr: Off, graph: 0, generic: 0 }
+                        - { value: 1, descr: On, graph: 1, generic: 0 }
+                -
+                    oid: infoCompressorTable
+                    value: compr4Running
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.2.1.1.1.1.9603.{{ $index }}'
+                    descr: '{{ $unitsettingName }} - Compressor 4'
+                    index: 'compr4Running.{{ $index }}'
+                    group: 'Compressor State'
+                    skip_values:
+                        -
+                          oid: numberOfCompressors
+                          op: '<'
+                          value: 4
+                    state_name: comprRunning
+                    states:
+                        - { value: 0, descr: Off, graph: 0, generic: 0 }
+                        - { value: 1, descr: On, graph: 1, generic: 0 }
+                -
+                    oid: infoCompressorTable
+                    value: compr5Running
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.2.1.1.1.1.9703.{{ $index }}'
+                    descr: '{{ $unitsettingName }} - Compressor 5'
+                    index: 'compr5Running.{{ $index }}'
+                    group: 'Compressor State'
+                    skip_values:
+                        -
+                          oid: numberOfCompressors
+                          op: '<'
+                          value: 5
+                    state_name: comprRunning
+                    states:
+                        - { value: 0, descr: Off, graph: 0, generic: 0 }
+                        - { value: 1, descr: On, graph: 1, generic: 0 }
+                -
+                    oid: infoCompressorTable
+                    value: compr6Running
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.2.1.1.1.1.9803.{{ $index }}'
+                    descr: '{{ $unitsettingName }} - Compressor 6'
+                    index: 'compr6Running.{{ $index }}'
+                    group: 'Compressor State'
+                    skip_values:
+                        -
+                          oid: numberOfCompressors
+                          op: '<'
+                          value: 6
+                    state_name: comprRunning
+                    states:
+                        - { value: 0, descr: Off, graph: 0, generic: 0 }
+                        - { value: 1, descr: On, graph: 1, generic: 0 }
+                -
+                    oid: infoCoolingTable
+                    value: coolingMode
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.2.1.9.1.1787.{{ $index }}'
+                    descr: '{{ $unitsettingName }} - Cooling Mode'
+                    index: 'coolingMode.{{ $index }}'
+                    group: 'Cooling Mode'
+                    state_name: coolingMode
+                    states:
+                        - { value: 0, descr: 'None', graph: 0, generic: 0 }
+                        - { value: 1, descr: 'Free Cooling', graph: 1, generic: 0 }
+                        - { value: 2, descr: 'Extended Free Cooling', graph: 2, generic: 0 }
+                        - { value: 3, descr: 'Mixed Compressor and Free Cooling', graph: 3, generic: 0 }
+                        - { value: 4, descr: 'Compressor Cooling', graph: 4, generic: 0 }
+                        - { value: 5, descr: 'Chilled Water Cooling', graph: 5, generic: 0 }
+                        - { value: 6, descr: 'Air Fan Cooling', graph: 6, generic: 0 }
+                -
+                    oid: infoAirTable
+                    value: louver1Open
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.2.4.1.1.7202.{{ $index }}'
+                    descr: '{{ $unitsettingName }} - General Louver 1'
+                    index: 'louver1Open.{{ $index }}'
+                    group: 'Louver State'
+                    skip_values:
+                        -
+                          oid: numberOfLouvers
+                          op: '<'
+                          value: 1
+                    state_name: louverOpen
+                    states:
+                        - { value: 0, descr: Closed, graph: 0, generic: 0 }
+                        - { value: 1, descr: Open, graph: 1, generic: 0 }
+                -
+                    oid: infoAirTable
+                    value: louver2Open
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.2.4.1.1.7302.{{ $index }}'
+                    descr: '{{ $unitsettingName }} - General Louver 2'
+                    index: 'louver2Open.{{ $index }}'
+                    group: 'Louver State'
+                    skip_values:
+                        -
+                          oid: numberOfLouvers
+                          op: '<'
+                          value: 2
+                    state_name: louverOpen
+                    states:
+                        - { value: 0, descr: Closed, graph: 0, generic: 0 }
+                        - { value: 1, descr: Open, graph: 1, generic: 0 }
+                -
+                    oid: infoAirTable
+                    value: louver3Open
+                    num_oid: '.1.3.6.1.4.1.29462.10.2.1.1.2.4.1.1.7402.{{ $index }}'
+                    descr: '{{ $unitsettingName }} - General Louver 3'
+                    index: 'louver3Open.{{ $index }}'
+                    group: 'Louver State'
+                    skip_values:
+                        -
+                          oid: numberOfLouvers
+                          op: '<'
+                          value: 3
+                    state_name: louverOpen
+                    states:
+                        - { value: 0, descr: Closed, graph: 0, generic: 0 }
+                        - { value: 1, descr: Open, graph: 1, generic: 0 }
