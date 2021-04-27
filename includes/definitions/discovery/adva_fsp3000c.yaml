@@ -19,6 +19,7 @@ modules:
         ber:
             options:
                 divisor: 1000000000000000000
+                skip_values: 0
             data:
                 -
                     oid: aosCoreFacCurrFecTable
@@ -29,6 +30,7 @@ modules:
         dbm:
             options:
                 divisor: 10
+                skip_values: -600
             data:
                 -
                     oid: aosCoreFacCurrOpticalPowerTable
