@@ -34,7 +34,7 @@ IMPORTS
     NOTIFICATION-GROUP,
     OBJECT-GROUP
                                         FROM  SNMPv2-CONF;
-    
+
 
 advaMIB MODULE-IDENTITY
     LAST-UPDATED "201409290000Z"  -- September 29, 2014
@@ -68,7 +68,7 @@ advaMIB MODULE-IDENTITY
     REVISION    "201202070000Z"  -- February 7, 2012
     DESCRIPTION
         "Revised ADVA Common MIB version 2.1."
-        
+
     REVISION    "200802210000Z"  -- February 21, 2008
     DESCRIPTION
         "Revised ADVA Common MIB version 2.0."
@@ -115,6 +115,14 @@ fsp150          OBJECT IDENTIFIER ::= { products 10 }
 fspR7           OBJECT IDENTIFIER ::= { products 11 }
 fsp150cm        OBJECT IDENTIFIER ::= { products 12 }
 fspNm           OBJECT IDENTIFIER ::= { products 13 }
+fsp3000alm      OBJECT IDENTIFIER ::= { products 14 }
+
+aos             OBJECT IDENTIFIER ::= { products 20 }
+aosCommon       OBJECT IDENTIFIER ::= { aos 1 }
+aosProducts     OBJECT IDENTIFIER ::= { aos 2 }
+
+fsp3000c        OBJECT IDENTIFIER ::= { aosProducts 1 }
+fspxg480        OBJECT IDENTIFIER ::= { aosProducts 2 }
 
 
 -- **************************************************************************
@@ -345,7 +353,7 @@ SYNTAX      INTEGER {
 SourceIpAddress ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "IP address used as source IP address in FTP Client session" 
+         "IP address used as source IP address in FTP Client session"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -367,7 +375,7 @@ F7FileTimeStamp ::= TEXTUAL-CONVENTION
 F7AutoBackupInterval ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Scheduled Database Backup Interval" 
+         "Scheduled Database Backup Interval"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -390,7 +398,7 @@ F7AutoBackupInterval ::= TEXTUAL-CONVENTION
 F7AutoBackupRunState ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "" 
+         ""
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -402,7 +410,7 @@ F7AutoBackupRunState ::= TEXTUAL-CONVENTION
 PartitionStatus ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Partition State" 
+         "Partition State"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -427,7 +435,7 @@ FspDate ::= TEXTUAL-CONVENTION
          * Notes: - the value of year is in network-byte order
          For example, Tuesday May 26, 1992 would be
          displayed as:
-         1992-5-26" 
+         1992-5-26"
   SYNTAX        OCTET STRING (SIZE(4..4))
 
 
@@ -442,14 +450,14 @@ FspTime ::= TEXTUAL-CONVENTION
          2 2 minutes 0..59
          3 3 seconds 0..60
          (use 60 for leap-second)
-         For example: 13-10-26" 
+         For example: 13-10-26"
   SYNTAX        OCTET STRING (SIZE(3..3))
 
 
 ApsDirection ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Bi-Directional | Unidirectional setup used in protection setup: Not to be used by others" 
+         "Bi-Directional | Unidirectional setup used in protection setup: Not to be used by others"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -460,7 +468,7 @@ ApsDirection ::= TEXTUAL-CONVENTION
 ApsDirectionCaps ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Bi-Directional | Unidirectional setup used in protection setup: Not to be used by others" 
+         "Bi-Directional | Unidirectional setup used in protection setup: Not to be used by others"
   SYNTAX        BITS
                 {
                   capUndefined(0),
@@ -471,7 +479,7 @@ ApsDirectionCaps ::= TEXTUAL-CONVENTION
 ApsHoldoffTime ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Soak period before switch after trigger." 
+         "Soak period before switch after trigger."
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -582,7 +590,7 @@ ApsHoldoffTime ::= TEXTUAL-CONVENTION
 ApsHoldoffTimeCaps ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Soak period before switch after trigger." 
+         "Soak period before switch after trigger."
   SYNTAX        BITS
                 {
                   capUndefined(0),
@@ -693,7 +701,7 @@ ApsHoldoffTimeCaps ::= TEXTUAL-CONVENTION
 AssignmentState ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Assignment State. Describes an entity' state." 
+         "Assignment State. Describes an entity' state."
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -705,7 +713,7 @@ AssignmentState ::= TEXTUAL-CONVENTION
 BootState ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Boot State. Every state change (excluding IDLE) does generate a corresponding transient condition." 
+         "Boot State. Every state change (excluding IDLE) does generate a corresponding transient condition."
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -725,7 +733,7 @@ BootState ::= TEXTUAL-CONVENTION
 CommandEqpt ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Update, Install and Reboot commands." 
+         "Update, Install and Reboot commands."
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -741,7 +749,7 @@ CommandEqpt ::= TEXTUAL-CONVENTION
 CpWdmEntityClass ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Control Plane WDM Entity Class" 
+         "Control Plane WDM Entity Class"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -759,7 +767,7 @@ CpWdmEntityClass ::= TEXTUAL-CONVENTION
 EnableStateCaps ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Usage of 3rd Party Plugs" 
+         "Usage of 3rd Party Plugs"
   SYNTAX        BITS
                 {
                   capUndefined(0),
@@ -770,7 +778,7 @@ EnableStateCaps ::= TEXTUAL-CONVENTION
 EntityClass ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Entity Class" 
+         "Entity Class"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -868,7 +876,7 @@ EntityIndex ::= TEXTUAL-CONVENTION
          These will have an entry in the entityTable, but their EntityType will
          be undefined.
          The EntityIndex is used similarly to how the entPhysicalIndex in
-         RFC2737 (Entity MIB) is used to address entities and containers of entities." 
+         RFC2737 (Entity MIB) is used to address entities and containers of entities."
   SYNTAX        Integer32 (0..2147483647)
 
 EntityType ::= TEXTUAL-CONVENTION
@@ -876,13 +884,13 @@ EntityType ::= TEXTUAL-CONVENTION
   DESCRIPTION
          "Identifies the entity type. Each NE may have their own use of
          this INTEGER value, which will defined in the conformance document
-         for each individual NE MIB." 
+         for each individual NE MIB."
   SYNTAX        Integer32
 
 EquipmentState ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "" 
+         ""
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -893,7 +901,7 @@ EquipmentState ::= TEXTUAL-CONVENTION
 EthDuplexMode ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Duplex Mode Provision." 
+         "Duplex Mode Provision."
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -904,7 +912,7 @@ EthDuplexMode ::= TEXTUAL-CONVENTION
 EthDuplexModeCaps ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Duplex Mode Provision." 
+         "Duplex Mode Provision."
   SYNTAX        BITS
                 {
                   capUndefined(0),
@@ -915,7 +923,7 @@ EthDuplexModeCaps ::= TEXTUAL-CONVENTION
 FileArea ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Type of Area" 
+         "Type of Area"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -932,7 +940,7 @@ FileArea ::= TEXTUAL-CONVENTION
 FileType ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Type of File" 
+         "Type of File"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -952,7 +960,7 @@ FspR7AdminStateSnmpProxy ::= TEXTUAL-CONVENTION
          "The Administrative State will be displayed in the GUI with full
          name values; it will be differently displayed in TL1 syntax according
          to TL1 display rules. The transaction into the UAS state requires
-         a special destroy/delete function" 
+         a special destroy/delete function"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -966,7 +974,7 @@ FspR7AdminStateSnmpProxyCaps ::= TEXTUAL-CONVENTION
          "The Administrative State will be displayed in the GUI with full
          name values; it will be differently displayed in TL1 syntax according
          to TL1 display rules. The transaction into the UAS state requires
-         a special destroy/delete function" 
+         a special destroy/delete function"
   SYNTAX        BITS
                 {
                   capUndefined(0),
@@ -987,7 +995,7 @@ FspR7Date ::= TEXTUAL-CONVENTION
          * Notes: - the value of year is in network-byte order
          For example, Tuesday May 26, 1992 would be
          displayed as:
-         1992-5-26" 
+         1992-5-26"
   SYNTAX        OCTET STRING (SIZE(4..4))
 
 FspR7EquipmentType ::= TEXTUAL-CONVENTION
@@ -995,7 +1003,7 @@ FspR7EquipmentType ::= TEXTUAL-CONVENTION
   DESCRIPTION
          "The TYPE of Equipment and the MODE setting determine uniquely
          the number and allowed TYPE's of the provisionable dependent
-         entities (plugs, interfaces, modules)" 
+         entities (plugs, interfaces, modules)"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -1224,7 +1232,7 @@ FspR7EquipmentTypeCaps ::= TEXTUAL-CONVENTION
   DESCRIPTION
          "The TYPE of Equipment and the MODE setting determine uniquely
          the number and allowed TYPE's of the provisionable dependent
-         entities (plugs, interfaces, modules)" 
+         entities (plugs, interfaces, modules)"
   SYNTAX        BITS
                 {
                   capUndefined(0),
@@ -1451,7 +1459,7 @@ FspR7EquipmentTypeCaps ::= TEXTUAL-CONVENTION
 FspR7FalseTrue ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "False True variable." 
+         "False True variable."
   SYNTAX        INTEGER
 
                 {
@@ -1471,13 +1479,13 @@ FspR7Time ::= TEXTUAL-CONVENTION
          2 2 minutes 0..59
          3 3 seconds 0..60
          (use 60 for leap-second)
-         For example: 13-10-26" 
+         For example: 13-10-26"
   SYNTAX        OCTET STRING (SIZE(3..3))
 
 FspR7YesNo ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "YesNo variable." 
+         "YesNo variable."
   SYNTAX        INTEGER
 
                 {
@@ -1489,7 +1497,7 @@ FspR7YesNo ::= TEXTUAL-CONVENTION
 FspR7UsersDb ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Users Database" 
+         "Users Database"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -1501,7 +1509,7 @@ FspR7UsersDb ::= TEXTUAL-CONVENTION
 Grade ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Used to distinguish between NCU capabilities (range of supported services or applications)" 
+         "Used to distinguish between NCU capabilities (range of supported services or applications)"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -1514,7 +1522,7 @@ Grade ::= TEXTUAL-CONVENTION
 LoopConfig ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "External or Facility Loopback" 
+         "External or Facility Loopback"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -1526,7 +1534,7 @@ LoopConfig ::= TEXTUAL-CONVENTION
 LoopConfigCaps ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "External or Facility Loopback" 
+         "External or Facility Loopback"
   SYNTAX        BITS
                 {
                   capUndefined(0),
@@ -1538,7 +1546,7 @@ LoopConfigCaps ::= TEXTUAL-CONVENTION
 DestinationNodeOrAgentState ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "" 
+         ""
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -1548,7 +1556,7 @@ DestinationNodeOrAgentState ::= TEXTUAL-CONVENTION
 NcuAutoActivation ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Enable scheduled activation of the standby PGM partition." 
+         "Enable scheduled activation of the standby PGM partition."
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -1559,7 +1567,7 @@ NcuAutoActivation ::= TEXTUAL-CONVENTION
 NoYesNA ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Enumerator values no(1), yes(2), notApplicable(3)." 
+         "Enumerator values no(1), yes(2), notApplicable(3)."
   SYNTAX        INTEGER
 
                 {
@@ -1575,7 +1583,7 @@ OhTerminationLevel ::= TEXTUAL-CONVENTION
          "The entity is Addressable by Management [because its supporting entity is defined in the database and therefore its address existsSignal Tremination Level of Intrusive Access to Header Information.
          Not used in 7.0, monitoring is one layer higher than TERM level,
          if applicable. All conditions detected on monitoring layer will not
-         be reported (severity degradated to NR)." 
+         be reported (severity degradated to NR)."
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -1596,7 +1604,7 @@ OhTerminationLevelCaps ::= TEXTUAL-CONVENTION
          "The entity is Addressable by Management [because its supporting entity is defined in the database and therefore its address existsSignal Tremination Level of Intrusive Access to Header Information.
          Not used in 7.0, monitoring is one layer higher than TERM level,
          if applicable. All conditions detected on monitoring layer will not
-         be reported (severity degradated to NR)." 
+         be reported (severity degradated to NR)."
   SYNTAX        BITS
                 {
                   capUndefined(0),
@@ -1614,7 +1622,7 @@ OhTerminationLevelCaps ::= TEXTUAL-CONVENTION
 OtnPayloadType ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "The PAYLOAD defines the transport service type of the payload" 
+         "The PAYLOAD defines the transport service type of the payload"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -1648,7 +1656,7 @@ OtnPayloadType ::= TEXTUAL-CONVENTION
 OtnPayloadTypeCaps ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "The PAYLOAD defines the transport service type of the payload" 
+         "The PAYLOAD defines the transport service type of the payload"
   SYNTAX        BITS
                 {
                   capUndefined(0),
@@ -1682,7 +1690,7 @@ OtnPayloadTypeCaps ::= TEXTUAL-CONVENTION
 OtnTcmLevel ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Activation of Tandem Connection Monitoring Instance A. 6 Tandem Connection Monitoring levels are available." 
+         "Activation of Tandem Connection Monitoring Instance A. 6 Tandem Connection Monitoring levels are available."
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -1698,7 +1706,7 @@ OtnTcmLevel ::= TEXTUAL-CONVENTION
 OtnTcmLevelCaps ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Activation of Tandem Connection Monitoring Instance A. 6 Tandem Connection Monitoring levels are available." 
+         "Activation of Tandem Connection Monitoring Instance A. 6 Tandem Connection Monitoring levels are available."
   SYNTAX        BITS
                 {
                   capUndefined(0),
@@ -1714,7 +1722,7 @@ OtnTcmLevelCaps ::= TEXTUAL-CONVENTION
 PgmType ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Program Type" 
+         "Program Type"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -1728,7 +1736,7 @@ PgmType ::= TEXTUAL-CONVENTION
 ProtectionMech ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Port Based refers to HST Cards and Switches: Card Based refers to additional equipment protection" 
+         "Port Based refers to HST Cards and Switches: Card Based refers to additional equipment protection"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -1736,14 +1744,14 @@ ProtectionMech ::= TEXTUAL-CONVENTION
                   channelCardProtection(2),  --Channel card protection
                   channelProtection(3),  --Channel protection
                   versatileSwitchedProtection(4),
-                  flowProtection(5),  --ELINE Flow (EVC) protection 
+                  flowProtection(5),  --ELINE Flow (EVC) protection
                   clientCardProtection(6)
                 }
 
 ProtectionMechCaps ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Port Based refers to HST Cards and Switches: Card Based refers to additional equipment protection" 
+         "Port Based refers to HST Cards and Switches: Card Based refers to additional equipment protection"
   SYNTAX        BITS
                 {
                   capUndefined(0),
@@ -1758,7 +1766,7 @@ ProtectionMechCaps ::= TEXTUAL-CONVENTION
 RestoreActivation ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Shows whether the last activation was(will be) a database restore or a new software activation" 
+         "Shows whether the last activation was(will be) a database restore or a new software activation"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -1772,7 +1780,7 @@ RestoreActivation ::= TEXTUAL-CONVENTION
 RestoreActivationCaps ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Shows whether the last activation was(will be) a database restore or a new software activation" 
+         "Shows whether the last activation was(will be) a database restore or a new software activation"
   SYNTAX        BITS
                 {
                   capUndefined(0),
@@ -1786,7 +1794,7 @@ RestoreActivationCaps ::= TEXTUAL-CONVENTION
 ServiceAffecting ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Service Affecting Change during FWP upgrade and Restart operation" 
+         "Service Affecting Change during FWP upgrade and Restart operation"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -1800,7 +1808,7 @@ ServiceAffecting ::= TEXTUAL-CONVENTION
 ServiceAffectingCaps ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Service Affecting Change during FWP upgrade and Restart operation" 
+         "Service Affecting Change during FWP upgrade and Restart operation"
   SYNTAX        BITS
                 {
                   capUndefined(0),
@@ -1814,7 +1822,7 @@ ServiceAffectingCaps ::= TEXTUAL-CONVENTION
 StandbyServiceAffecting ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Service Affecting Change during FWP upgrade after activation of STBY PGM partition." 
+         "Service Affecting Change during FWP upgrade after activation of STBY PGM partition."
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -1830,7 +1838,7 @@ SnmpProxySynchronizationState ::= TEXTUAL-CONVENTION
   DESCRIPTION
          "This parameter is used to synchronize proxy table on GNE with destination NE's
          availability.
-        " 
+        "
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -1842,7 +1850,7 @@ SnmpProxySynchronizationStage ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
          "This parameter is used to indicate stage of synchronization process.
-        " 
+        "
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -1853,7 +1861,7 @@ SnmpProxySynchronizationStage ::= TEXTUAL-CONVENTION
 SonetSectSigDegThres ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "The SONET signal degrade threshold as a bit error rate." 
+         "The SONET signal degrade threshold as a bit error rate."
   SYNTAX        INTEGER
 
                 {
@@ -1868,7 +1876,7 @@ SonetSectSigDegThres ::= TEXTUAL-CONVENTION
 SonetSectSigDegThresCaps ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "The SONET signal degrade threshold as a bit error rate." 
+         "The SONET signal degrade threshold as a bit error rate."
   SYNTAX        INTEGER
 
                 {
@@ -1883,7 +1891,7 @@ SonetSectSigDegThresCaps ::= TEXTUAL-CONVENTION
 SonetTimingSource ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Interface Timing Source Selection" 
+         "Interface Timing Source Selection"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -1894,7 +1902,7 @@ SonetTimingSource ::= TEXTUAL-CONVENTION
 SonetTimingSourceCaps ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Interface Timing Source Selection" 
+         "Interface Timing Source Selection"
   SYNTAX        BITS
                 {
                   capUndefined(0),
@@ -1905,19 +1913,19 @@ SonetTimingSourceCaps ::= TEXTUAL-CONVENTION
 SonetTraceForm ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Byte-Length of Trace Compared to Expected" 
+         "Byte-Length of Trace Compared to Expected"
   SYNTAX        INTEGER
                 {
                   undefined(0),
                   form64CRLF(1),  --note: only 62 byte available for user
                   form16CRC7(2),  --note: only 15 byte available for user
-                  form1Byte(3)  --note: [000...255] consits of 3 strings of decimal numbers 
+                  form1Byte(3)  --note: [000...255] consits of 3 strings of decimal numbers
                 }
 
 SonetTraceFormCaps ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Byte-Length of Trace Compared to Expected" 
+         "Byte-Length of Trace Compared to Expected"
   SYNTAX        BITS
                 {
                   capUndefined(0),
@@ -1936,7 +1944,7 @@ SonetVcBundleAllocation ::= TEXTUAL-CONVENTION
          assigned sequence number 0, byte 1: VC4/VC3 transporting the second container of the
          VC-4-Xv/VC-3-Xv is assigned sequence number 1, etc. byte (X-1): VC4/VC3 transporting
          container X of the VC-4-Xv/VC-3-Xv is assigned sequence number (X-1).
-        " 
+        "
   SYNTAX        OCTET STRING (SIZE(0..64))
 
 SonetVcBundleAllocationCaps ::= TEXTUAL-CONVENTION
@@ -1944,7 +1952,7 @@ SonetVcBundleAllocationCaps ::= TEXTUAL-CONVENTION
   DESCRIPTION
          "Each bit set in the bitmask represents the number
          of a free VC. Bit 0 = VC #1, and so on.
-        " 
+        "
   SYNTAX        BITS
 
                 {
@@ -2017,7 +2025,7 @@ SonetVcBundleAllocationCaps ::= TEXTUAL-CONVENTION
 TimMode ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Detection of TIM-OTU Condition can be configured" 
+         "Detection of TIM-OTU Condition can be configured"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -2029,7 +2037,7 @@ TimMode ::= TEXTUAL-CONVENTION
 TimModeCaps ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Detection of TIM-OTU Condition can be configured" 
+         "Detection of TIM-OTU Condition can be configured"
   SYNTAX        BITS
                 {
                   capUndefined(0),
@@ -2041,7 +2049,7 @@ TimModeCaps ::= TEXTUAL-CONVENTION
 FspR7TrapsinkLifetime ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Lifetime of Trapsink" 
+         "Lifetime of Trapsink"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -2056,7 +2064,7 @@ FspR7TrapsinkLifetime ::= TEXTUAL-CONVENTION
 VirtualContainerType ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Virtual Container Group Type" 
+         "Virtual Container Group Type"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -2082,7 +2090,7 @@ VirtualContainerType ::= TEXTUAL-CONVENTION
 VirtualContainerTypeCaps ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Virtual Container Group Type" 
+         "Virtual Container Group Type"
   SYNTAX        BITS
                 {
                   capUndefined(0),
@@ -2108,7 +2116,7 @@ VirtualContainerTypeCaps ::= TEXTUAL-CONVENTION
 YesNoNA ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Enumerator values yes(1), no(2), notApplicable(3)." 
+         "Enumerator values yes(1), no(2), notApplicable(3)."
   SYNTAX        INTEGER
 
                 {
@@ -2121,13 +2129,13 @@ YesNoNA ::= TEXTUAL-CONVENTION
 LogicalIfTransport ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "" 
+         ""
   SYNTAX        OCTET STRING (SIZE(1..64))
 
 LogicalIfTransportCaps ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "" 
+         ""
   SYNTAX        BITS
 
                 {
@@ -2152,7 +2160,7 @@ LogicalIfTransportCaps ::= TEXTUAL-CONVENTION
 ModuleForm ::= TEXTUAL-CONVENTION
   STATUS        current
   DESCRIPTION
-         "Form of module" 
+         "Form of module"
   SYNTAX        INTEGER
                 {
                   undefined(0),
@@ -2681,7 +2689,7 @@ neTrapsinkVersion OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "" 
+        ""
     ::=  { neTrapsinkEntry 5 }
 
 neTrapsinkUserName OBJECT-TYPE
@@ -2689,7 +2697,7 @@ neTrapsinkUserName OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "A human readable string representing the name of the user." 
+        "A human readable string representing the name of the user."
     ::=  { neTrapsinkEntry 6 }
 
 neTrapsinkType OBJECT-TYPE
@@ -2697,7 +2705,7 @@ neTrapsinkType OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Lifetime of Trapsink." 
+        "Lifetime of Trapsink."
     ::= { neTrapsinkEntry 7 }
 
 -- **************************************************************************
@@ -2893,7 +2901,7 @@ sourceIpAddress OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "IP address used as source IP address in FTP Client session"	
+        "IP address used as source IP address in FTP Client session"
     ::=  { neSoftwareUpgrade 10 }
 
 neSwInstallState OBJECT-TYPE
@@ -2919,18 +2927,18 @@ neSwUpgradeType OBJECT-TYPE
          procedure (for example IP address, user name, password etc.). revised(2) value corresponds
          to Revised Upgrade Procedure which uses new PGM format. This parameter is NOT stored in the
          database and will be reset to default after SNMP Agent restart.
-        " 
+        "
     ::=  { neSoftwareUpgrade 12 }
-    
+
 neSwDownloadProgress OBJECT-TYPE
     SYNTAX      Integer32 (0..100 | -2147483648)
     UNITS       "%"
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "Operational progress in % i.e. file transfer"	
+        "Operational progress in % i.e. file transfer"
     ::=  { neSoftwareUpgrade 13 }
-    
+
 neSwUpgradeCommonIpSrv OBJECT-TYPE
     SYNTAX      SnmpAdminString
     MAX-ACCESS  read-write
@@ -3082,7 +3090,7 @@ neBackupRestoreState OBJECT-TYPE
         backupRestoreIdle (6),
         backupRestoreCompleted (7),
         dbActivationFailed (8),
-        dbActivationInProgress (9)        
+        dbActivationInProgress (9)
     }
     MAX-ACCESS  read-only
     STATUS      current
@@ -3169,7 +3177,7 @@ neF7AutomaticRemoteBackupTimeStamp OBJECT-TYPE
     DESCRIPTION
         "Add or omit the time stamp in the backuped filename."
     ::=  { neBackupRestore 12 }
-    
+
 neF7AutomaticRemoteBackupCommonIpSrv OBJECT-TYPE
     SYNTAX      SnmpAdminString
     MAX-ACCESS  read-write
@@ -3387,7 +3395,7 @@ inventoryUnitName OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "ADVA Official Equipment Name" 
+        "ADVA Official Equipment Name"
     ::=  { inventoryEntry 1 }
 
 inventoryFirmwarePackageRev OBJECT-TYPE
@@ -3402,7 +3410,7 @@ inventoryHardwareRev OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Equipment Revision Number" 
+        "Equipment Revision Number"
     ::=  { inventoryEntry 3 }
 
 inventorySoftwareRev OBJECT-TYPE
@@ -3424,7 +3432,7 @@ inventorySerialNum OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Equipment Serial Number" 
+        "Equipment Serial Number"
     ::=  { inventoryEntry 6 }
 
 inventoryPartnumber OBJECT-TYPE
@@ -3439,7 +3447,7 @@ inventoryCleiCode OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Common Language Equipment Identifier" 
+        "Common Language Equipment Identifier"
     ::=  { inventoryEntry 8 }
 
 inventoryVendorId OBJECT-TYPE
@@ -3447,7 +3455,7 @@ inventoryVendorId OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "OEM Vendor Code" 
+        "OEM Vendor Code"
     ::=  { inventoryEntry 9 }
 
 inventoryType OBJECT-TYPE
@@ -3462,7 +3470,7 @@ inventoryUniversalSerialIdent OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Unique Serial Identifier" 
+        "Unique Serial Identifier"
     ::=  { inventoryEntry 11 }
 
 inventoryMacAddress OBJECT-TYPE
@@ -3470,7 +3478,7 @@ inventoryMacAddress OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Ethernet MAC address" 
+        "Ethernet MAC address"
     ::=  { inventoryEntry 12 }
 
 inventoryGradeInventory OBJECT-TYPE
@@ -3478,7 +3486,7 @@ inventoryGradeInventory OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Used to distinguish between NCU capabilities (range of supported services or applications)" 
+        "Used to distinguish between NCU capabilities (range of supported services or applications)"
     ::=  { inventoryEntry 13 }
 
 entityTable OBJECT-TYPE
@@ -3523,7 +3531,7 @@ entityContainedIn OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Contained in" 
+        "Contained in"
     ::=  { entityEntry 2 }
 
 entityClass OBJECT-TYPE
@@ -3538,7 +3546,7 @@ entityClassInstanceNumber OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The class instance number of this entity within the module(card)" 
+        "The class instance number of this entity within the module(card)"
     ::=  { entityEntry 4 }
 
 entityIndexAid OBJECT-TYPE
@@ -3546,7 +3554,7 @@ entityIndexAid OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Name" 
+        "Name"
     ::=  { entityEntry 5 }
 
 entityType OBJECT-TYPE
@@ -3597,7 +3605,7 @@ containsIndex OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "" 
+        ""
     ::=  { containsEntry 1 }
 
 controlPlaneWdmEntityTable OBJECT-TYPE
@@ -3640,7 +3648,7 @@ controlPlaneWdmEntityContainedIn OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Contained in" 
+        "Contained in"
     ::=  { controlPlaneWdmEntityEntry 2 }
 
 controlPlaneWdmEntityClass OBJECT-TYPE
@@ -3655,7 +3663,7 @@ controlPlaneWdmEntityClassInstanceNumber OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The class instance number of this entity within the module(card)" 
+        "The class instance number of this entity within the module(card)"
     ::=  { controlPlaneWdmEntityEntry 4 }
 
 controlPlaneWdmEntityIndexAid OBJECT-TYPE
@@ -3663,7 +3671,7 @@ controlPlaneWdmEntityIndexAid OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Name" 
+        "Name"
     ::=  { controlPlaneWdmEntityEntry 5 }
 
 controlPlaneWdmEntityAssignmentState OBJECT-TYPE
@@ -3700,7 +3708,7 @@ controlPlaneWdmContainsIndex OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "" 
+        ""
     ::=  { controlPlaneWdmContainsEntry 1 }
 
 controlPlaneEthEntityTable OBJECT-TYPE
@@ -3743,7 +3751,7 @@ controlPlaneEthEntityContainedIn OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Contained in" 
+        "Contained in"
     ::=  { controlPlaneEthEntityEntry 2 }
 
 controlPlaneEthEntityClass OBJECT-TYPE
@@ -3758,7 +3766,7 @@ controlPlaneEthEntityClassInstanceNumber OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The class instance number of this entity within the module(card)" 
+        "The class instance number of this entity within the module(card)"
     ::=  { controlPlaneEthEntityEntry 4 }
 
 controlPlaneEthEntityIndexAid OBJECT-TYPE
@@ -3766,7 +3774,7 @@ controlPlaneEthEntityIndexAid OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Name" 
+        "Name"
     ::=  { controlPlaneEthEntityEntry 5 }
 
 controlPlaneEthEntityAssignmentState OBJECT-TYPE
@@ -3803,7 +3811,7 @@ controlPlaneEthContainsIndex OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "" 
+        ""
     ::=  { controlPlaneEthContainsEntry 1 }
 
 ptpEntityTable OBJECT-TYPE
@@ -3849,7 +3857,7 @@ ptpEntityContainedIn OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Contained in" 
+        "Contained in"
     ::=  { ptpEntityEntry 2 }
 
 ptpEntityClass OBJECT-TYPE
@@ -3864,7 +3872,7 @@ ptpEntityClassInstanceNumber OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The class instance number of this entity within the module(card)" 
+        "The class instance number of this entity within the module(card)"
     ::=  { ptpEntityEntry 4 }
 
 ptpEntityIndexAid OBJECT-TYPE
@@ -3872,7 +3880,7 @@ ptpEntityIndexAid OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Name" 
+        "Name"
     ::=  { ptpEntityEntry 5 }
 
 ptpEntityType OBJECT-TYPE
@@ -3946,7 +3954,7 @@ vtpEntityContainedIn OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Contained in" 
+        "Contained in"
     ::=  { vtpEntityEntry 2 }
 
 vtpEntityClass OBJECT-TYPE
@@ -3961,7 +3969,7 @@ vtpEntityClassInstanceNumber OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The class instance number of this entity within the module(card)" 
+        "The class instance number of this entity within the module(card)"
     ::=  { vtpEntityEntry 4 }
 
 vtpEntityIndexAid OBJECT-TYPE
@@ -3969,7 +3977,7 @@ vtpEntityIndexAid OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Name" 
+        "Name"
     ::=  { vtpEntityEntry 5 }
 
 vtpEntityType OBJECT-TYPE
@@ -4040,7 +4048,7 @@ controlPlaneOtnEntityContainedIn OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Contained in" 
+        "Contained in"
     ::=  { controlPlaneOtnEntityEntry 2 }
 
 controlPlaneOtnEntityClass OBJECT-TYPE
@@ -4055,7 +4063,7 @@ controlPlaneOtnEntityClassInstanceNumber OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The class instance number of this entity within the module(card)" 
+        "The class instance number of this entity within the module(card)"
     ::=  { controlPlaneOtnEntityEntry 4 }
 
 controlPlaneOtnEntityIndexAid OBJECT-TYPE
@@ -4063,7 +4071,7 @@ controlPlaneOtnEntityIndexAid OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Name" 
+        "Name"
     ::=  { controlPlaneOtnEntityEntry 5 }
 
 controlPlaneOtnEntityAssignmentState OBJECT-TYPE
@@ -4100,7 +4108,7 @@ controlPlaneOtnContainsIndex OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "" 
+        ""
     ::=  { controlPlaneOtnContainsEntry 1 }
 
 sonetSectionConfigTable OBJECT-TYPE
@@ -4145,7 +4153,7 @@ sonetSectionConfigTimingSource OBJECT-TYPE
     ::=  { sonetSectionConfigEntry 1 }
 
 sonetSectionConfigSignalDegradeThreshhold OBJECT-TYPE
-    SYNTAX      Unsigned32 (1..100 | 4294967295) 
+    SYNTAX      Unsigned32 (1..100 | 4294967295)
     UNITS       "%"
     MAX-ACCESS  read-write
     STATUS      current
@@ -4155,7 +4163,7 @@ sonetSectionConfigSignalDegradeThreshhold OBJECT-TYPE
     ::=  { sonetSectionConfigEntry 2 }
 
 sonetSectionConfigSignalDegradePeriod OBJECT-TYPE
-    SYNTAX      Unsigned32 (2..10 | 4294967295) 
+    SYNTAX      Unsigned32 (2..10 | 4294967295)
     UNITS       "s"
     MAX-ACCESS  read-write
     STATUS      current
@@ -4170,7 +4178,7 @@ sonetSectionConfigTraceForm OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Byte-Length of Trace Compared to Expected" 
+        "Byte-Length of Trace Compared to Expected"
     ::=  { sonetSectionConfigEntry 4 }
 
 sonetSectionConfigTraceExpected OBJECT-TYPE
@@ -4178,7 +4186,7 @@ sonetSectionConfigTraceExpected OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Expected Sec/RS trace. NULL TRACE implies that no trace comparison is made." 
+        "Expected Sec/RS trace. NULL TRACE implies that no trace comparison is made."
     ::=  { sonetSectionConfigEntry 5 }
 
 sonetSectionConfigTraceTransmit OBJECT-TYPE
@@ -4186,7 +4194,7 @@ sonetSectionConfigTraceTransmit OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Sec/RS Trace to be Transmitted" 
+        "Sec/RS Trace to be Transmitted"
     ::=  { sonetSectionConfigEntry 6 }
 
 sonetSectionConfigTimMode OBJECT-TYPE
@@ -4194,7 +4202,7 @@ sonetSectionConfigTimMode OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Detection of TIM Sonet Section Condition can be configured" 
+        "Detection of TIM Sonet Section Condition can be configured"
     ::=  { sonetSectionConfigEntry 7 }
 
 sonetSectionDataTable OBJECT-TYPE
@@ -4226,7 +4234,7 @@ sonetSectionDataTraceReceived OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The received Sec/RS Trace" 
+        "The received Sec/RS Trace"
     ::=  { sonetSectionDataEntry 1 }
 
 otuSectionConfigTable OBJECT-TYPE
@@ -4261,7 +4269,7 @@ OtuSectionConfigEntry ::=  SEQUENCE
     otuSectionConfigTimMode TimMode }
 
 otuSectionConfigSignalDegradeThreshold OBJECT-TYPE
-    SYNTAX      Integer32 (1..100 | -2147483648) 
+    SYNTAX      Integer32 (1..100 | -2147483648)
     UNITS       "%"
     MAX-ACCESS  read-write
     STATUS      current
@@ -4270,7 +4278,7 @@ otuSectionConfigSignalDegradeThreshold OBJECT-TYPE
     ::=  { otuSectionConfigEntry 1 }
 
 otuSectionConfigSignalDegradePeriod OBJECT-TYPE
-    SYNTAX      Unsigned32 (2..10 | 4294967295) 
+    SYNTAX      Unsigned32 (2..10 | 4294967295)
     UNITS       "s"
     MAX-ACCESS  read-write
     STATUS      current
@@ -4292,7 +4300,7 @@ otuSectionConfigStuffing OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Indicates if bit/byte stuffing is used in the transport signal." 
+        "Indicates if bit/byte stuffing is used in the transport signal."
     ::=  { otuSectionConfigEntry 4 }
 
 otuSectionConfigTraceExpected OBJECT-TYPE
@@ -4300,7 +4308,7 @@ otuSectionConfigTraceExpected OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Expected SAPI part of the OTU trace (15 character). NULL TRACE implies that no trace comparison is made." 
+        "Expected SAPI part of the OTU trace (15 character). NULL TRACE implies that no trace comparison is made."
     ::=  { otuSectionConfigEntry 5 }
 
 otuSectionConfigTraceTransmitSapi OBJECT-TYPE
@@ -4308,7 +4316,7 @@ otuSectionConfigTraceTransmitSapi OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The transmitted SAPI part of the OTU trace (15 character)" 
+        "The transmitted SAPI part of the OTU trace (15 character)"
     ::=  { otuSectionConfigEntry 6 }
 
 otuSectionConfigTraceTransmitDapi OBJECT-TYPE
@@ -4316,7 +4324,7 @@ otuSectionConfigTraceTransmitDapi OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The transmitted DAPI part of the OTU trace (15 character)" 
+        "The transmitted DAPI part of the OTU trace (15 character)"
     ::=  { otuSectionConfigEntry 7 }
 
 otuSectionConfigTraceTransmitOpsp OBJECT-TYPE
@@ -4324,7 +4332,7 @@ otuSectionConfigTraceTransmitOpsp OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The transmitted Operator Specific part of the OTU trace (32 character)" 
+        "The transmitted Operator Specific part of the OTU trace (32 character)"
     ::=  { otuSectionConfigEntry 8 }
 
 otuSectionConfigTimMode OBJECT-TYPE
@@ -4332,7 +4340,7 @@ otuSectionConfigTimMode OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Detection of TIM-OTU Condition can be configured" 
+        "Detection of TIM-OTU Condition can be configured"
     ::=  { otuSectionConfigEntry 9 }
 
 otuSectionDataTable OBJECT-TYPE
@@ -4362,7 +4370,7 @@ OtuSectionDataEntry ::=  SEQUENCE
     otuSectionDataTraceReceivedOpsp OCTET STRING }
 
 otuSectionDataResultingTotalBitrate OBJECT-TYPE
-    SYNTAX      Unsigned32 
+    SYNTAX      Unsigned32
     UNITS       "Mbps"
     MAX-ACCESS  read-only
     STATUS      current
@@ -4375,7 +4383,7 @@ otuSectionDataTraceReceivedSapi OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The received SAPI part of the OTU trace (15 character)" 
+        "The received SAPI part of the OTU trace (15 character)"
     ::=  { otuSectionDataEntry 2 }
 
 otuSectionDataTraceReceivedDapi OBJECT-TYPE
@@ -4383,7 +4391,7 @@ otuSectionDataTraceReceivedDapi OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The received DAPI part of the OTU trace (15 character)" 
+        "The received DAPI part of the OTU trace (15 character)"
     ::=  { otuSectionDataEntry 3 }
 
 otuSectionDataTraceReceivedOpsp OBJECT-TYPE
@@ -4391,7 +4399,7 @@ otuSectionDataTraceReceivedOpsp OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The received Operator Specific part of the OTU trace (32 character)" 
+        "The received Operator Specific part of the OTU trace (32 character)"
     ::=  { otuSectionDataEntry 4 }
 
 oduSectionConfigTable OBJECT-TYPE
@@ -4424,7 +4432,7 @@ OduSectionConfigEntry ::=  SEQUENCE
     oduSectionConfigTimMode TimMode }
 
 oduSectionConfigSignalDegradeThres OBJECT-TYPE
-    SYNTAX      Integer32 (1..100 | -2147483648) 
+    SYNTAX      Integer32 (1..100 | -2147483648)
     UNITS       "%"
     MAX-ACCESS  read-write
     STATUS      current
@@ -4433,7 +4441,7 @@ oduSectionConfigSignalDegradeThres OBJECT-TYPE
     ::=  { oduSectionConfigEntry 1 }
 
 oduSectionConfigSignalDegradePeriod OBJECT-TYPE
-    SYNTAX      Unsigned32 (2..10 | 4294967295) 
+    SYNTAX      Unsigned32 (2..10 | 4294967295)
     UNITS       "s"
     MAX-ACCESS  read-write
     STATUS      current
@@ -4446,7 +4454,7 @@ oduSectionConfigTraceExpected OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Expected SAPI part of the ODU trace (15 character). NULL TRACE implies that no trace comparison is made." 
+        "Expected SAPI part of the ODU trace (15 character). NULL TRACE implies that no trace comparison is made."
     ::=  { oduSectionConfigEntry 3 }
 
 oduSectionConfigTraceTransmitSapi OBJECT-TYPE
@@ -4454,7 +4462,7 @@ oduSectionConfigTraceTransmitSapi OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The transmitted SAPI part of the ODU trace (15 character)" 
+        "The transmitted SAPI part of the ODU trace (15 character)"
     ::=  { oduSectionConfigEntry 4 }
 
 oduSectionConfigTraceTransmitDapi OBJECT-TYPE
@@ -4462,7 +4470,7 @@ oduSectionConfigTraceTransmitDapi OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The transmitted DAPI part of the ODU trace (15 character)" 
+        "The transmitted DAPI part of the ODU trace (15 character)"
     ::=  { oduSectionConfigEntry 5 }
 
 oduSectionConfigTraceTransmitOpsp OBJECT-TYPE
@@ -4470,7 +4478,7 @@ oduSectionConfigTraceTransmitOpsp OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The transmitted Operator Specific part of the ODU trace (32 character)" 
+        "The transmitted Operator Specific part of the ODU trace (32 character)"
     ::=  { oduSectionConfigEntry 6 }
 
 oduSectionConfigTimMode OBJECT-TYPE
@@ -4478,7 +4486,7 @@ oduSectionConfigTimMode OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Detection of TIM-ODU Condition can be configured" 
+        "Detection of TIM-ODU Condition can be configured"
     ::=  { oduSectionConfigEntry 7 }
 
 oduSectionDataTable OBJECT-TYPE
@@ -4511,7 +4519,7 @@ oduSectionDataTraceReceivedSapi OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The received SAPI part of the ODU trace (15 character)" 
+        "The received SAPI part of the ODU trace (15 character)"
     ::=  { oduSectionDataEntry 1 }
 
 oduSectionDataTraceReceivedDapi OBJECT-TYPE
@@ -4519,7 +4527,7 @@ oduSectionDataTraceReceivedDapi OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The received DAPI part of the ODU trace (15 character)" 
+        "The received DAPI part of the ODU trace (15 character)"
     ::=  { oduSectionDataEntry 2 }
 
 oduSectionDataTraceReceivedOpsp OBJECT-TYPE
@@ -4527,7 +4535,7 @@ oduSectionDataTraceReceivedOpsp OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The received Operator Specific part of the ODU trace (32 character)" 
+        "The received Operator Specific part of the ODU trace (32 character)"
     ::=  { oduSectionDataEntry 3 }
 
 oduTcmAConfigTable OBJECT-TYPE
@@ -4560,7 +4568,7 @@ OduTcmAConfigEntry ::=  SEQUENCE
     oduTcmAConfigTimMode TimMode }
 
 oduTcmAConfigSignalDegradeThreshold OBJECT-TYPE
-    SYNTAX      Integer32 (1..100 | -2147483648) 
+    SYNTAX      Integer32 (1..100 | -2147483648)
     UNITS       "%"
     MAX-ACCESS  read-write
     STATUS      current
@@ -4569,7 +4577,7 @@ oduTcmAConfigSignalDegradeThreshold OBJECT-TYPE
     ::=  { oduTcmAConfigEntry 1 }
 
 oduTcmAConfigSignalDegradePeriod OBJECT-TYPE
-    SYNTAX      Unsigned32 (2..10 | 4294967295) 
+    SYNTAX      Unsigned32 (2..10 | 4294967295)
     UNITS       "s"
     MAX-ACCESS  read-write
     STATUS      current
@@ -4582,7 +4590,7 @@ oduTcmAConfigTcmLevel OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Activation of Tandem Connection Monitoring Instance A" 
+        "Activation of Tandem Connection Monitoring Instance A"
     ::=  { oduTcmAConfigEntry 3 }
 
 oduTcmAConfigTraceExpected OBJECT-TYPE
@@ -4590,7 +4598,7 @@ oduTcmAConfigTraceExpected OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Expected SAPI part of the TCMA trace (15 character). NULL TRACE-TCM implies that no trace comparison is made." 
+        "Expected SAPI part of the TCMA trace (15 character). NULL TRACE-TCM implies that no trace comparison is made."
     ::=  { oduTcmAConfigEntry 4 }
 
 oduTcmAConfigTraceTransmitSapi OBJECT-TYPE
@@ -4598,7 +4606,7 @@ oduTcmAConfigTraceTransmitSapi OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The transmitted SAPI part of the TCMA trace (15 character)" 
+        "The transmitted SAPI part of the TCMA trace (15 character)"
     ::=  { oduTcmAConfigEntry 5 }
 
 oduTcmAConfigTraceTransmitDapi OBJECT-TYPE
@@ -4606,7 +4614,7 @@ oduTcmAConfigTraceTransmitDapi OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The transmitted DAPI part of the TCMA trace (15 character)" 
+        "The transmitted DAPI part of the TCMA trace (15 character)"
     ::=  { oduTcmAConfigEntry 6 }
 
 oduTcmAConfigTraceTransmitOpsp OBJECT-TYPE
@@ -4614,7 +4622,7 @@ oduTcmAConfigTraceTransmitOpsp OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The transmitted Operator Specific part of the TCMA trace (32 character)" 
+        "The transmitted Operator Specific part of the TCMA trace (32 character)"
     ::=  { oduTcmAConfigEntry 7 }
 
 oduTcmAConfigTimMode OBJECT-TYPE
@@ -4622,7 +4630,7 @@ oduTcmAConfigTimMode OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Detection of TIM-TCMA Condition can be configured" 
+        "Detection of TIM-TCMA Condition can be configured"
     ::=  { oduTcmAConfigEntry 8 }
 
 oduTcmBConfigTable OBJECT-TYPE
@@ -4654,7 +4662,7 @@ OduTcmBConfigEntry ::=  SEQUENCE
     oduTcmBConfigTimMode TimMode }
 
 oduTcmBConfigSignalDegradeThreshold OBJECT-TYPE
-    SYNTAX      Integer32 (1..100 | -2147483648) 
+    SYNTAX      Integer32 (1..100 | -2147483648)
     UNITS       "%"
     MAX-ACCESS  read-write
     STATUS      current
@@ -4663,7 +4671,7 @@ oduTcmBConfigSignalDegradeThreshold OBJECT-TYPE
     ::=  { oduTcmBConfigEntry 1 }
 
 oduTcmBConfigSignalDegradePeriod OBJECT-TYPE
-    SYNTAX      Unsigned32 (2..10 | 4294967295) 
+    SYNTAX      Unsigned32 (2..10 | 4294967295)
     UNITS       "s"
     MAX-ACCESS  read-write
     STATUS      current
@@ -4676,7 +4684,7 @@ oduTcmBConfigTcmLevel OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Activation of Tandem Connection Monitoring Instance B" 
+        "Activation of Tandem Connection Monitoring Instance B"
     ::=  { oduTcmBConfigEntry 3 }
 
 oduTcmBConfigTraceExpected OBJECT-TYPE
@@ -4684,7 +4692,7 @@ oduTcmBConfigTraceExpected OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Expected SAPI part of the TCMB trace (15 character). NULL TRACE-TCM implies that no trace comparison is made." 
+        "Expected SAPI part of the TCMB trace (15 character). NULL TRACE-TCM implies that no trace comparison is made."
     ::=  { oduTcmBConfigEntry 4 }
 
 oduTcmBConfigTraceTransmitSapi OBJECT-TYPE
@@ -4692,7 +4700,7 @@ oduTcmBConfigTraceTransmitSapi OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The transmitted SAPI part of the TCMB trace (15 character)" 
+        "The transmitted SAPI part of the TCMB trace (15 character)"
     ::=  { oduTcmBConfigEntry 5 }
 
 oduTcmBConfigTraceTransmitDapi OBJECT-TYPE
@@ -4700,7 +4708,7 @@ oduTcmBConfigTraceTransmitDapi OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The transmitted DAPI part of the TCMB trace (15 character)" 
+        "The transmitted DAPI part of the TCMB trace (15 character)"
     ::=  { oduTcmBConfigEntry 6 }
 
 oduTcmBConfigTraceTransmitOpsp OBJECT-TYPE
@@ -4708,7 +4716,7 @@ oduTcmBConfigTraceTransmitOpsp OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The transmitted Operator Specific part of the TCMB trace (32 character)" 
+        "The transmitted Operator Specific part of the TCMB trace (32 character)"
     ::=  { oduTcmBConfigEntry 7 }
 
 oduTcmBConfigTimMode OBJECT-TYPE
@@ -4716,7 +4724,7 @@ oduTcmBConfigTimMode OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Detection of TIM-TCMB Condition can be configured" 
+        "Detection of TIM-TCMB Condition can be configured"
     ::=  { oduTcmBConfigEntry 8 }
 
 oduTcmCConfigTable OBJECT-TYPE
@@ -4748,7 +4756,7 @@ OduTcmCConfigEntry ::=  SEQUENCE
     oduTcmCConfigTimMode TimMode }
 
 oduTcmCConfigSignalDegradeThreshold OBJECT-TYPE
-    SYNTAX      Integer32 (1..100 | -2147483648) 
+    SYNTAX      Integer32 (1..100 | -2147483648)
     UNITS       "%"
     MAX-ACCESS  read-write
     STATUS      current
@@ -4757,7 +4765,7 @@ oduTcmCConfigSignalDegradeThreshold OBJECT-TYPE
     ::=  { oduTcmCConfigEntry 1 }
 
 oduTcmCConfigSignalDegradePeriod OBJECT-TYPE
-    SYNTAX      Unsigned32 (2..10 | 4294967295) 
+    SYNTAX      Unsigned32 (2..10 | 4294967295)
     UNITS       "s"
     MAX-ACCESS  read-write
     STATUS      current
@@ -4770,7 +4778,7 @@ oduTcmCConfigTcmLevel OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Activation of Tandem Connection Monitoring Instance C" 
+        "Activation of Tandem Connection Monitoring Instance C"
     ::=  { oduTcmCConfigEntry 3 }
 
 oduTcmCConfigTraceExpected OBJECT-TYPE
@@ -4778,7 +4786,7 @@ oduTcmCConfigTraceExpected OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Expected SAPI part of the TCMC trace (15 character). NULL TRACE-TCM implies that no trace comparison is made." 
+        "Expected SAPI part of the TCMC trace (15 character). NULL TRACE-TCM implies that no trace comparison is made."
     ::=  { oduTcmCConfigEntry 4 }
 
 oduTcmCConfigTraceTransmitSapi OBJECT-TYPE
@@ -4786,7 +4794,7 @@ oduTcmCConfigTraceTransmitSapi OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The transmitted SAPI part of the TCMC trace (15 character)" 
+        "The transmitted SAPI part of the TCMC trace (15 character)"
     ::=  { oduTcmCConfigEntry 5 }
 
 oduTcmCConfigTraceTransmitDapi OBJECT-TYPE
@@ -4794,7 +4802,7 @@ oduTcmCConfigTraceTransmitDapi OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The transmitted DAPI part of the TCMC trace (15 character)" 
+        "The transmitted DAPI part of the TCMC trace (15 character)"
     ::=  { oduTcmCConfigEntry 6 }
 
 oduTcmCConfigTraceTransmitOpsp OBJECT-TYPE
@@ -4802,7 +4810,7 @@ oduTcmCConfigTraceTransmitOpsp OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The transmitted Operator Specific part of the TCMC trace (32 character)" 
+        "The transmitted Operator Specific part of the TCMC trace (32 character)"
     ::=  { oduTcmCConfigEntry 7 }
 
 oduTcmCConfigTimMode OBJECT-TYPE
@@ -4810,7 +4818,7 @@ oduTcmCConfigTimMode OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Detection of TIM-TCMC Condition can be configured" 
+        "Detection of TIM-TCMC Condition can be configured"
     ::=  { oduTcmCConfigEntry 8 }
 
 oduTcmADataTable OBJECT-TYPE
@@ -4841,7 +4849,7 @@ oduTcmADataTraceReceivedSapi OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The received SAPI part of the TCMA trace (15 character)" 
+        "The received SAPI part of the TCMA trace (15 character)"
     ::=  { oduTcmADataEntry 1 }
 
 oduTcmADataTraceReceivedDapi OBJECT-TYPE
@@ -4849,7 +4857,7 @@ oduTcmADataTraceReceivedDapi OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The received DAPI part of the TCMA trace (15 character)" 
+        "The received DAPI part of the TCMA trace (15 character)"
     ::=  { oduTcmADataEntry 2 }
 
 oduTcmADataTraceReceivedOpsp OBJECT-TYPE
@@ -4857,7 +4865,7 @@ oduTcmADataTraceReceivedOpsp OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The received Operator Specific part of the TCMA trace (32 character)" 
+        "The received Operator Specific part of the TCMA trace (32 character)"
     ::=  { oduTcmADataEntry 3 }
 
 oduTcmBDataTable OBJECT-TYPE
@@ -4888,7 +4896,7 @@ oduTcmBDataTraceReceivedSapi OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The received SAPI part of the TCMB trace (15 character)" 
+        "The received SAPI part of the TCMB trace (15 character)"
     ::=  { oduTcmBDataEntry 1 }
 
 oduTcmBDataTraceReceivedDapi OBJECT-TYPE
@@ -4896,7 +4904,7 @@ oduTcmBDataTraceReceivedDapi OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The received DAPI part of the TCMB trace (15 character)" 
+        "The received DAPI part of the TCMB trace (15 character)"
     ::=  { oduTcmBDataEntry 2 }
 
 oduTcmBDataTraceReceivedOpsp OBJECT-TYPE
@@ -4904,7 +4912,7 @@ oduTcmBDataTraceReceivedOpsp OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The received Operator Specific part of the TCMB trace (32 character)" 
+        "The received Operator Specific part of the TCMB trace (32 character)"
     ::=  { oduTcmBDataEntry 3 }
 
 oduTcmCDataTable OBJECT-TYPE
@@ -4935,7 +4943,7 @@ oduTcmCDataTraceReceivedSapi OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The received SAPI part of the TCMC trace (15 character)" 
+        "The received SAPI part of the TCMC trace (15 character)"
     ::=  { oduTcmCDataEntry 1 }
 
 oduTcmCDataTraceReceivedDapi OBJECT-TYPE
@@ -4943,7 +4951,7 @@ oduTcmCDataTraceReceivedDapi OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The received DAPI part of the TCMC trace (15 character)" 
+        "The received DAPI part of the TCMC trace (15 character)"
     ::=  { oduTcmCDataEntry 2 }
 
 oduTcmCDataTraceReceivedOpsp OBJECT-TYPE
@@ -4951,7 +4959,7 @@ oduTcmCDataTraceReceivedOpsp OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The received Operator Specific part of the TCMC trace (32 character)" 
+        "The received Operator Specific part of the TCMC trace (32 character)"
     ::=  { oduTcmCDataEntry 3 }
 
 swDbFileTable OBJECT-TYPE
@@ -4996,7 +5004,7 @@ swDbFileArea OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Type of Area" 
+        "Type of Area"
     ::=  { swDbFileEntry 2 }
 
 swDbFileType OBJECT-TYPE
@@ -5004,16 +5012,16 @@ swDbFileType OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Type of File" 
+        "Type of File"
     ::=  { swDbFileEntry 3 }
 
 swDbFileSize OBJECT-TYPE
-    SYNTAX      Unsigned32 
+    SYNTAX      Unsigned32
     UNITS       "Byte"
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Size of Memory = USED + AVAILABLE" 
+        "Size of Memory = USED + AVAILABLE"
     ::=  { swDbFileEntry 4 }
 
 swDbFileCreationTime OBJECT-TYPE
@@ -5021,7 +5029,7 @@ swDbFileCreationTime OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Creation Time" 
+        "Creation Time"
     ::=  { swDbFileEntry 5 }
 
 swDbFileVersion OBJECT-TYPE
@@ -5029,7 +5037,7 @@ swDbFileVersion OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "General Release Issue Number of software in the ACT or STBY memory location. Format: XX-YY-Z" 
+        "General Release Issue Number of software in the ACT or STBY memory location. Format: XX-YY-Z"
     ::=  { swDbFileEntry 6 }
 
 swDbFileGrade OBJECT-TYPE
@@ -5037,7 +5045,7 @@ swDbFileGrade OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Used to distinguish between NCU capabilities (range of supported services or applications)" 
+        "Used to distinguish between NCU capabilities (range of supported services or applications)"
     ::=  { swDbFileEntry 7 }
 
 swDbFileComment OBJECT-TYPE
@@ -5045,7 +5053,7 @@ swDbFileComment OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "Comment of PGM or DBS files." 
+        "Comment of PGM or DBS files."
     ::=  { swDbFileEntry 8 }
 
 swDbFileFileName OBJECT-TYPE
@@ -5053,7 +5061,7 @@ swDbFileFileName OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "File Name" 
+        "File Name"
     ::=  { swDbFileEntry 9 }
 
 swDbFileRowStatus OBJECT-TYPE
@@ -5061,7 +5069,7 @@ swDbFileRowStatus OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "RowStatus" 
+        "RowStatus"
     ::=  { swDbFileEntry 10 }
 
 swDbFilePgmType OBJECT-TYPE
@@ -5069,7 +5077,7 @@ swDbFilePgmType OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Program Type" 
+        "Program Type"
     ::=  { swDbFileEntry 11 }
 
 fwDataTable OBJECT-TYPE
@@ -5109,7 +5117,7 @@ fwDataNewVersion OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "New Firmware Package Revision Number of file which resides on ACT PGM partition." 
+        "New Firmware Package Revision Number of file which resides on ACT PGM partition."
     ::=  { fwDataEntry 1 }
 
 fwDataStandbyVersion OBJECT-TYPE
@@ -5117,7 +5125,7 @@ fwDataStandbyVersion OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "New Firmware Package Revision Number of file which resides on STBY PGM partition." 
+        "New Firmware Package Revision Number of file which resides on STBY PGM partition."
     ::=  { fwDataEntry 2 }
 
 fwDataServiceImpairment OBJECT-TYPE
@@ -5125,7 +5133,7 @@ fwDataServiceImpairment OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Service Affecting Change during FWP upgrade and Restart operation" 
+        "Service Affecting Change during FWP upgrade and Restart operation"
     ::=  { fwDataEntry 3 }
 
 fwDataBootStatus OBJECT-TYPE
@@ -5133,7 +5141,7 @@ fwDataBootStatus OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Boot State. Every state change (excluding IDLE) does generate a corresponding transient condition." 
+        "Boot State. Every state change (excluding IDLE) does generate a corresponding transient condition."
     ::=  { fwDataEntry 4 }
 
 fwDataFirmwarePackageRev OBJECT-TYPE
@@ -5141,7 +5149,7 @@ fwDataFirmwarePackageRev OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Active Firmware Package Revision Number of module software." 
+        "Active Firmware Package Revision Number of module software."
     ::=  { fwDataEntry 5 }
 
 fwDataStandbyServiceImpairment OBJECT-TYPE
@@ -5149,7 +5157,7 @@ fwDataStandbyServiceImpairment OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Service Affecting Change during FWP upgrade after activation of STBY PGM partition." 
+        "Service Affecting Change during FWP upgrade after activation of STBY PGM partition."
     ::=  { fwDataEntry 6 }
 
 fwDataFirmwareAvailable OBJECT-TYPE
@@ -5157,7 +5165,7 @@ fwDataFirmwareAvailable OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Firmware package for Encryption module available on RDISK" 
+        "Firmware package for Encryption module available on RDISK"
     ::=  { fwDataEntry 7 }
 
 fwDataFirmwareApproved OBJECT-TYPE
@@ -5165,7 +5173,7 @@ fwDataFirmwareApproved OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Firmware package update for Encryption module is approved by Crypto Officer" 
+        "Firmware package update for Encryption module is approved by Crypto Officer"
     ::=  { fwDataEntry 8 }
 
 fwDataFirmwarePackageRevBackup OBJECT-TYPE
@@ -5173,7 +5181,7 @@ fwDataFirmwarePackageRevBackup OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Standbay Firmware Package Revision Number, Format XX.YY.ZZ (X,Y,Z are decimal characters, leading 0 are omitted)." 
+        "Standbay Firmware Package Revision Number, Format XX.YY.ZZ (X,Y,Z are decimal characters, leading 0 are omitted)."
     ::=  { fwDataEntry 9 }
 
 fwDataReadyForActivation OBJECT-TYPE
@@ -5181,7 +5189,7 @@ fwDataReadyForActivation OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "FWPREV-STBY == FWPREV-SYS-ACT" 
+        "FWPREV-STBY == FWPREV-SYS-ACT"
     ::=  { fwDataEntry 10 }
 
 fwDataActivationReadyOnStandby OBJECT-TYPE
@@ -5189,7 +5197,7 @@ fwDataActivationReadyOnStandby OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "FWPREV-STBY == FWPREV-SYS-STBY" 
+        "FWPREV-STBY == FWPREV-SYS-STBY"
     ::=  { fwDataEntry 11 }
 
 fwDataProtectionPart OBJECT-TYPE
@@ -5197,7 +5205,7 @@ fwDataProtectionPart OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Module is active part of Channel Card Protection Group." 
+        "Module is active part of Channel Card Protection Group."
     ::=  { fwDataEntry 12 }
 
 fwDataForm OBJECT-TYPE
@@ -5205,7 +5213,7 @@ fwDataForm OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Form of module" 
+        "Form of module"
     ::=  { fwDataEntry 13 }
 
 coldRestartCapTable OBJECT-TYPE
@@ -5233,7 +5241,7 @@ coldRestartCapServiceAffectingCap OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Service Affecting Change during FWP upgrade and Restart operation" 
+        "Service Affecting Change during FWP upgrade and Restart operation"
     ::=  { coldRestartCapEntry 1 }
 
 eqpFwUpgradeRequest OBJECT-TYPE
@@ -5472,7 +5480,7 @@ swDbDataArea OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Type of Area" 
+        "Type of Area"
     ::=  { swDbDataEntry 2 }
 
 swDbDataProgramVersion OBJECT-TYPE
@@ -5480,7 +5488,7 @@ swDbDataProgramVersion OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "General Release Issue Number of software in the ACT or STBY memory location. Format: XX-YY-Z" 
+        "General Release Issue Number of software in the ACT or STBY memory location. Format: XX-YY-Z"
     ::=  { swDbDataEntry 3 }
 
 swDbDataDatabaseVersion OBJECT-TYPE
@@ -5488,7 +5496,7 @@ swDbDataDatabaseVersion OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "General Release Issue Number of Database in the ACT or STBY memory location. Typically this will be the same as the GISSUE." 
+        "General Release Issue Number of Database in the ACT or STBY memory location. Typically this will be the same as the GISSUE."
     ::=  { swDbDataEntry 4 }
 
 swDbDataActivationTime OBJECT-TYPE
@@ -5496,7 +5504,7 @@ swDbDataActivationTime OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Activation Time" 
+        "Activation Time"
     ::=  { swDbDataEntry 5 }
 
 swDbDataRestoreConfig OBJECT-TYPE
@@ -5504,7 +5512,7 @@ swDbDataRestoreConfig OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Shows whether the last activation was(will be) a database restore or a new software activation" 
+        "Shows whether the last activation was(will be) a database restore or a new software activation"
     ::=  { swDbDataEntry 6 }
 
 swDbDataFirmwareSetVersion OBJECT-TYPE
@@ -5512,7 +5520,7 @@ swDbDataFirmwareSetVersion OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Firmware Package Set Version" 
+        "Firmware Package Set Version"
     ::=  { swDbDataEntry 7 }
 
 swDbDataNcuSoftwareVersion OBJECT-TYPE
@@ -5520,7 +5528,7 @@ swDbDataNcuSoftwareVersion OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "NCU Software Version ACT or STBY memory location. Format: XX-YY-Z" 
+        "NCU Software Version ACT or STBY memory location. Format: XX-YY-Z"
     ::=  { swDbDataEntry 8 }
 
 swDbDataStandbyPartitionStatus OBJECT-TYPE
@@ -5528,7 +5536,7 @@ swDbDataStandbyPartitionStatus OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Partition State" 
+        "Partition State"
     ::=  { swDbDataEntry 9 }
 
 swDbDataNumEqpt OBJECT-TYPE
@@ -5536,7 +5544,7 @@ swDbDataNumEqpt OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Number of all provisioned and equipped equipment in system" 
+        "Number of all provisioned and equipped equipment in system"
     ::=  { swDbDataEntry 10 }
 
 swDbDataNumLegacyEqpt OBJECT-TYPE
@@ -5544,7 +5552,7 @@ swDbDataNumLegacyEqpt OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Number of all legacy provisioned and equipped modules in system," 
+        "Number of all legacy provisioned and equipped modules in system,"
     ::=  { swDbDataEntry 11 }
 
 swDbDataNumNativeSaUpdate OBJECT-TYPE
@@ -5552,7 +5560,7 @@ swDbDataNumNativeSaUpdate OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Number of all native modules which have to be updated (SA), both with already properly installed pak on standby image and those which need installation." 
+        "Number of all native modules which have to be updated (SA), both with already properly installed pak on standby image and those which need installation."
     ::=  { swDbDataEntry 12 }
 
 swDbDataNumNativeNsaUpdate OBJECT-TYPE
@@ -5560,7 +5568,7 @@ swDbDataNumNativeNsaUpdate OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Number of all modules which have to be updated (NSA),both with already properly installed pak on standby image and those which need installation." 
+        "Number of all modules which have to be updated (NSA),both with already properly installed pak on standby image and those which need installation."
     ::=  { swDbDataEntry 13 }
 
 swDbDataNumLegacyUpdate OBJECT-TYPE
@@ -5568,7 +5576,7 @@ swDbDataNumLegacyUpdate OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Number of all legacy modules which have to be updated." 
+        "Number of all legacy modules which have to be updated."
     ::=  { swDbDataEntry 14 }
 
 swDbDataNumSaNotReady OBJECT-TYPE
@@ -5576,7 +5584,7 @@ swDbDataNumSaNotReady OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Number of modules which have to be SA updated on which new pak need to be installed." 
+        "Number of modules which have to be SA updated on which new pak need to be installed."
     ::=  { swDbDataEntry 15 }
 
 swDbDataNumNsaNotReady OBJECT-TYPE
@@ -5584,7 +5592,7 @@ swDbDataNumNsaNotReady OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Number of modules which have to be NSA updated on which new pak need to be installed." 
+        "Number of modules which have to be NSA updated on which new pak need to be installed."
     ::=  { swDbDataEntry 16 }
 
 swDbDataCapTable OBJECT-TYPE
@@ -5652,7 +5660,7 @@ swDbDataCapRestoreConfig OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Shows whether the last activation was(will be) a database restore or a new software activation" 
+        "Shows whether the last activation was(will be) a database restore or a new software activation"
     ::=  { swDbDataCapEntry 2 }
 
 swDbDataDefaultsTable OBJECT-TYPE
@@ -5720,7 +5728,7 @@ swDbDataDefaultsRestoreConfig OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "Shows whether the last activation was(will be) a database restore or a new software activation" 
+        "Shows whether the last activation was(will be) a database restore or a new software activation"
     ::=  { swDbDataDefaultsEntry 2 }
 
 snmpServerPort OBJECT-TYPE
@@ -5801,7 +5809,7 @@ snmpProxyEntrySingleTargetOutAddress OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "IP Address assigned to LAN IP Interface" 
+        "IP Address assigned to LAN IP Interface"
     ::=  { snmpProxyEntrySingleTargetOutEntry 1 }
 
 snmpProxyEntrySingleTargetOutPort OBJECT-TYPE
@@ -5809,7 +5817,7 @@ snmpProxyEntrySingleTargetOutPort OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "The destination port" 
+        "The destination port"
     ::=  { snmpProxyEntrySingleTargetOutEntry 2 }
 
 snmpProxyEntrySingleTargetOutNodeAgentStatus OBJECT-TYPE
@@ -5817,7 +5825,7 @@ snmpProxyEntrySingleTargetOutNodeAgentStatus OBJECT-TYPE
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
-        "" 
+        ""
     ::=  { snmpProxyEntrySingleTargetOutEntry 3 }
 
 snmpProxyEntrySingleTargetOutContext OBJECT-TYPE
@@ -5825,7 +5833,7 @@ snmpProxyEntrySingleTargetOutContext OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
-        "The contextName used in SNMP messages to an SNMP Proxy Forwarder to indicate for which SNMP Proxy Client the SNMP messages is meant" 
+        "The contextName used in SNMP messages to an SNMP Proxy Forwarder to indicate for which SNMP Proxy Client the SNMP messages is meant"
     ::=  { snmpProxyEntrySingleTargetOutEntry 4 }
 
 snmpProxyEntrySingleTargetOutRowStatus OBJECT-TYPE
@@ -5833,7 +5841,7 @@ snmpProxyEntrySingleTargetOutRowStatus OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "RowStatus" 
+        "RowStatus"
     ::=  { snmpProxyEntrySingleTargetOutEntry 5 }
 
 snmpProxyEntrySingleTargetOutAdminState OBJECT-TYPE
@@ -5844,7 +5852,7 @@ snmpProxyEntrySingleTargetOutAdminState OBJECT-TYPE
         "The Administrative State will be displayed in the GUI with full
          name values; it will be differently displayed in TL1 syntax according
          to TL1 display rules. The transaction into the UAS state requires
-         a special destroy/delete function" 
+         a special destroy/delete function"
     ::=  { snmpProxyEntrySingleTargetOutEntry 6 }
 
 snmpProxyEntrySingleTargetOutUserName OBJECT-TYPE
@@ -5852,7 +5860,7 @@ snmpProxyEntrySingleTargetOutUserName OBJECT-TYPE
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
-        "The name string for user authentication purposes" 
+        "The name string for user authentication purposes"
     ::=  { snmpProxyEntrySingleTargetOutEntry 7 }
 
 
