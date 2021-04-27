@@ -4,8 +4,9 @@ type: network
 icon: adva
 group: ADVA
 over:
-    - { graph: device_dbm, text: dbm }
-    - { graph: device_temperature, text: Temperature }
+    - { graph: device_dbm, text: dBm }
+    - { graph: device_snr, text: SNR }
+    - { graph: device_ber, text: BER }
 discovery:
     -
         sysObjectID:

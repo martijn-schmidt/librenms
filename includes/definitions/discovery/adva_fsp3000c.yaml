@@ -1,0 +1,54 @@
+mib: AOS-CORE-FACILITY-MIB:IF-MIB
+modules:
+    os:
+        hardware:
+            - ENTITY-MIB::entPhysicalName.1
+            - ENTITY-MIB::entPhysicalHardwareRev.1
+        hardware_template: '{{ ENTITY-MIB::entPhysicalName.1 }} {{ ENTITY-MIB::entPhysicalHardwareRev.1 }}'
+        serial: ENTITY-MIB::entPhysicalSerialNum.1
+        version: ENTITY-MIB::entPhysicalSoftwareRev.1
+    sensors:
+        pre-cache:
+            data:
+                -
+                    oid:
+                        - ifDescr
+                        - aosCoreFacCurrFecTable
+                        - aosCoreFacCurrOpticalPowerTable
+                        - aosCoreFacCurrSnrTable
+        ber:
+            options:
+                divisor: 1000000000000000000
+            data:
+                -
+                    oid: aosCoreFacCurrFecTable
+                    value: aosCoreFacCurrFecBitErrorRate
+                    num_oid: '.1.3.6.1.4.1.2544.1.20.1.3.2.4.1.3.{{ $index }}'
+                    descr: '{{ $ifDescr }} BER'
+                    index: 'aosCoreFacCurrFecBitErrorRate.{{ $index }}'
+        dbm:
+            options:
+                divisor: 10
+            data:
+                -
+                    oid: aosCoreFacCurrOpticalPowerTable
+                    value: aosCoreFacCurrOpticalPowerRx
+                    num_oid: '.1.3.6.1.4.1.2544.1.20.1.3.2.1.1.1.{{ $index }}'
+                    descr: '{{ $ifDescr }} Rx Pwr'
+                    index: 'aosCoreFacCurrOpticalPowerRx.{{ $index }}'
+                -
+                    oid: aosCoreFacCurrOpticalPowerTable
+                    value: aosCoreFacCurrOpticalPowerTx
+                    num_oid: '.1.3.6.1.4.1.2544.1.20.1.3.2.1.1.2.{{ $index }}'
+                    descr: '{{ $ifDescr }} Tx Pwr'
+                    index: 'aosCoreFacCurrOpticalPowerTx.{{ $index }}'
+        snr:
+            options:
+                divisor: 10
+            data:
+                -
+                    oid: aosCoreFacCurrSnrTable
+                    value: aosCoreFacCurrSnrValue
+                    num_oid: '.1.3.6.1.4.1.2544.1.20.1.3.2.7.1.1.{{ $index }}'
+                    descr: '{{ $ifDescr }} SNR'
+                    index: 'aosCoreFacCurrSnrValue.{{ $index }}'
